@@ -1,0 +1,27 @@
+The solution involves a better understanding of CSS specificity and carefully structuring your selectors. Instead of relying on inheritance and parent selectors implicitly overriding child selectors, we should use more specific selectors to ensure that the styles are applied as intended.
+
+```css
+.parent {
+  color: blue;
+}
+
+.child {
+  color: red;
+}
+
+.child.special {
+  color: green;
+}
+
+/* This selector now correctly overrides the parent selector due to higher specificity */
+.parent .child.special {
+  color: purple; 
+}
+
+/* This selector can remain unchanged or removed since the previous selector now targets it more specifically */
+.parent .child {
+  color: yellow;
+}
+```
+
+By properly using more specific selectors and understanding how specificity works, we can create a more robust CSS that works as expected in various scenarios.
