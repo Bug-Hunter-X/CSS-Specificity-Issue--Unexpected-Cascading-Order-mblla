@@ -1,0 +1,28 @@
+The following CSS code snippet demonstrates an uncommon issue related to the specificity of CSS selectors and the cascading order. The issue arises when trying to style an element with multiple classes and a parent element's style affects the child element unexpectedly. 
+
+```css
+.parent {
+  color: blue;
+}
+
+.child {
+  color: red;
+}
+
+.child.special {
+  color: green;
+}
+
+/* The problem is here */
+.parent .child.special {
+  color: purple; 
+}
+
+/* This selector has higher specificity */
+.parent .child {
+  color: yellow;
+}
+
+```
+
+The `parent .child.special` selector should override the `child.special` selector's color. But it doesn't. The `parent .child` selector with higher specificity takes over unexpectedly.
